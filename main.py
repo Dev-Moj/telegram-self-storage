@@ -1,7 +1,8 @@
 import os
 from datetime import datetime
-from telethon import TelegramClient
+
 from dotenv import load_dotenv
+from telethon import TelegramClient
 
 load_dotenv()
 
@@ -11,9 +12,9 @@ api_hash = os.getenv('api_hash')
 phone_number = os.getenv('phone_number')
 
 proxy = {
-    'proxy_type': 'HTTP',# HTTP and MTproto
-    'addr': '127.0.0.1',
-    'port': 8889,
+    'proxy_type': 'HTTP',  # HTTP and MTproto
+    'addr': '127.0.0.1',  # proxy host or ip
+    'port': '8889',  # proxy proxy
     # secret:'***********',
 }
 
