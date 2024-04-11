@@ -15,7 +15,7 @@ proxy = {
     'proxy_type': 'HTTP',  # HTTP and MTproto
     'addr': '127.0.0.1',  # proxy host or ip
     'port': '8889',  # proxy proxy
-    # secret:'***********',
+    # secret:'***********', if use MTProto
 }
 
 client = TelegramClient('session_name', api_id, api_hash, proxy=proxy)
