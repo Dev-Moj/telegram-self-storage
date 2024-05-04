@@ -14,7 +14,7 @@ phone_number = os.getenv('phone_number')
 proxy = {
     'proxy_type': 'HTTP',  # HTTP and MTproto
     'addr': '127.0.0.1',  # proxy host or ip
-    'port': '8889',  # proxy proxy
+    'port': 8889,  # proxy proxy(int)
     # secret:'***********', if use MTProto
 }
 
@@ -23,7 +23,6 @@ client = TelegramClient('session_name', api_id, api_hash, proxy=proxy)
 
 async def main():
     await client.start(phone=phone_number)
-    print('started....')
     async for dialog in client.iter_dialogs(limit=100):
         if dialog.is_user:
             entity = dialog.entity
@@ -34,11 +33,13 @@ async def main():
                         print('Downloading...')
                         await client.download_media(message.media, fname)
                         await client.send_file('me', open(fname, 'rb'))
-                        print('done...')
+                        print('done')
 
 
-while True:
-    try:
-        client.loop.run_until_complete(main())
-    except Exception as e:
-        pass
+if __name__ == '__main__':
+    print('started....')
+    while True:
+        try:
+            client.loop.run_until_complete(main())
+        except Exception as e:
+            pass
